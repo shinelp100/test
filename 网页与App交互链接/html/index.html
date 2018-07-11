@@ -24,7 +24,7 @@
     </head>
     <body>
 
-        <script src="/js/AppJSBridge.js"></script>
+        <script src="/js/AppJSBridge.js?V=1.0"></script>
 
         <div class="active-botton">
             <div class="active-btn-test">跳转到 发现页</div>
@@ -68,14 +68,12 @@
                 activeBtn.onclick=function(){
                     NativePageController('jumpFunc', {
                                 "jumpUrl": "http://www.wangcaigu.com/?appparams="+generateDiscovery()
-                            }, 'jumpFunc', {
-                                'jumpUrl': "http://www.wangcaigu.com/?appparams="+generateDiscovery()
                             });
                 }
                 //分享
                 var imageData;
                       convertImgToBase64('/images/demo-small.png', function(base64Img){
-                        console.log(base64Img);
+//                        console.log(base64Img);
                         imageData=base64Img;
                     });
                 var activeBtnShare=document.querySelector(".active-btn-share");
@@ -83,24 +81,18 @@
                     NativePageController('shareFunc', {
                         'title': '标题', 'describe' : '分享描述', 'thumbUrl' : '', 'linkUrl' : '',
                         'image':imageData.split(',')[1]
-                            }, 'shareFunc', {
-                                'title': '标题', 'describe' : '分享描述', 'thumbUrl' : '', 'linkUrl' : '',
-                                'image':imageData.split(',')[1]
                             });
                 }
                 //客服
                 var activeBtnKefu=document.querySelector(".active-btn-kefu");
                 activeBtnKefu.onclick=function(){
                     NativePageController('chartFunc', {
-                            }, 'chartFunc', {
                             });
                 }
                 //打电话
                 var activeBtnTel=document.querySelector(".active-btn-tel");
                 activeBtnTel.onclick=function(){
                     NativePageController('callFunc', {
-                                'tel' : '18888888888'
-                            }, 'callFunc', {
                                 'tel' : '18888888888'
                             });
                 }
@@ -109,8 +101,6 @@
                 activeBtnClose.onclick=function(){
                     NativePageController('jumpFunc', {
                                 'jumpUrl': 'close://'
-                            }, 'jumpFunc', {
-                                'jumpUrl': 'close://'
                             });
                 }
                 //右上角文字类型按钮 + 分享
@@ -118,32 +108,35 @@
                 activeBtnNavTextR.onclick=function(){
                     NativePageController('navRightType', {
                         'type': 'text', 'title' : '右上文字', 'font' : '18', 'color' : '999999'
-                            }, 'navRightType', {
-                                'type': 'text', 'title' : '右上文字', 'font' : '18', 'color' : '999999'
                             });
                 }
+                window.initPage(function(){
+                    alert(1232355);
+                });
+                NativePageController('navRightType', {
+                        'type': 'text', 'title' : '右上文字', 'font' : '18', 'color' : '999999'
+                            },);
                 //右上角图片类型按钮 + 分享
                 var activeBtnNavImageR=document.querySelector(".active-btn-navRightImage");
                 activeBtnNavImageR.onclick=function(){
                     NativePageController('navRightType', {
                         'type': 'image', 'imageUrl' : 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531030149638&di=84263027d5f0d56a19c3c6e1da8d1fe5&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F83%2F61%2F21v58PICTrU_1024.jpg'
-                            }, 'navRightType', {
-                                'type': 'image', 'imageUrl' : 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1531030149638&di=84263027d5f0d56a19c3c6e1da8d1fe5&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F13%2F83%2F61%2F21v58PICTrU_1024.jpg'
                             });
+                }
+                var getFunc = function(value){
+                    alert(value);
                 }
                 //获取本地toke
                 var activeBtnGetToken=document.querySelector(".active-btn-getToken");
                 activeBtnGetToken.onclick=function(){
                     NativePageController('getTokenFunc', {
-                            }, 'getTokenFunc', {
-                            });
+                            },getFunc);
                 }
+                
                 //设置导航栏标题
                 var activeBtnNavTitle=document.querySelector(".active-btn-navTitle");
                 activeBtnNavTitle.onclick=function(){
                     NativePageController('setNavTitle', {
-                                'title' : '测试标题'
-                            }, 'setNavTitle', {
                                 'title' : '测试标题'
                             });
                 }
@@ -152,8 +145,6 @@
                 activeBtnLicaiAll.onclick=function(){
                     NativePageController('jumpFunc', {
                         'jumpUrl': "http://www.wangcaigu.com/?appparams="+generateListWithSub(0,0)
-                            }, 'jumpFunc', {
-                                'jumpUrl': "http://www.wangcaigu.com/?appparams="+generateListWithSub(0,0)
                             });
                 }
                 //跳到变咸通
@@ -161,14 +152,12 @@
                 activeBtnBianxiantong.onclick=function(){
                     NativePageController('jumpFunc', {
                         'jumpUrl': "http://www.wangcaigu.com/?appparams="+generateListWithSub(1,2)
-                            }, 'jumpFunc', {
-                                'jumpUrl': "http://www.wangcaigu.com/?appparams="+generateListWithSub(1,2)
                             });
                 }
+
+                
             }
-            
-            
-           
+
         </script>
 
 
@@ -177,7 +166,6 @@
 <script src="/js/base64.min.js"></script>
 
 <script>
-
     function convertImgToBase64(url, callback, outputFormat){
             var canvas = document.createElement('CANVAS'),
                     ctx = canvas.getContext('2d'),
@@ -193,6 +181,6 @@
             };
             img.src = url;
         }
-
+    
 </script>
 </html>

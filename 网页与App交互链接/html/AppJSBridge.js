@@ -1,6 +1,5 @@
+/**iphone jsbridge js引入*/
 !function(window){
-    /**iphone jsbridge js引入*/
-    window.initPage = new Function;
     if (window.navigator.userAgent.toLowerCase().search("wcgapple") != -1) {
         // 这段代码是固定的，必须要放到js中
         window.setupWebViewJavascriptBridge = function (callback) {
@@ -21,18 +20,18 @@
         }
 
         // 与OC交互的所有JS方法都要在这里注册,才能让OC和JS之间相互调用
-        window.initPage = function(callBack){
-            window.setupWebViewJavascriptBridge(function (bridge) {
+        setupWebViewJavascriptBridge(function (bridge) {
 
-                /* JS给OC提供公开的API, 在OC中可以手动调用此API, 并且可以接收OC中传过来的参数,同时可回调OC */
-                // 获取用户信息
-                bridge.registerHandler('getRightButton', function (data, responseCallback) {
-                    if(typeof callBack === 'function') callBack();
-                });
-            })
-        }
+            /* JS给OC提供公开的API, 在OC中可以手动调用此API, 并且可以接收OC中传过来的参数,同时可回调OC */
+
+            // 获取用户信息
+            bridge.registerHandler('getRightButton', function (data, responseCallback) {
+
+            });
+        })
     }
-    //安卓初始化
+
+//安卓初始化
     if(navigator.userAgent.toLowerCase().match("wcgandroid")){
         //notation: js file can only use this kind of comments
         //since comments will cause error when use in webview.loadurl,
@@ -176,12 +175,8 @@
             readyEvent.bridge = WebViewJavascriptBridge;
             doc.dispatchEvent(readyEvent);
         })();
-        window.initPage = function(callBack){
-            WebViewJavascriptBridge.registerHandler('getRightButton', function (data, responseCallback) {
-                if(typeof callBack === 'function') callBack();
-            });
-        }
     }
+
     var androidCallback = function (funName, routeMeta, callback) {
         window["WebViewJavascriptBridge"].callHandler(
             funName
@@ -216,5 +211,5 @@
             }
         }
     }
-
 }(window);
+
