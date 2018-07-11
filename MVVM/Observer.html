@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>observer</title>
+</head>
+<body>
+<script>
+    /*
+    * observer 添加订阅者 通知订阅者
+    * */
+
+    function Observer(data) {
+        if(!data || typeof data !== "object"){
+            return ;
+        }
+        Object.keys(data).map(function(key){
+            defineReaction(data,key,data[key]);
+        })
+    }
+
+    function defineReaction(data,key,val){
+        var dep = new Dep();
+        Observer(val);
+        Object.defineProperty(data,key,{
+            enumerable: true,
+            configurable: false,
+            get: function(){
+                Dep.target && dep.addSub(Dep.target);
+                return val;
+            },
+            set: function(newVal){
+                console.log("监听到数据的变化："+val+"---->"+newVal);
+                val = newVal;
+                dep.notify(newVal);
+            }
+        })
+    }
+
+
+    function Dep() {
+        this.subs = [watcher];
+    }
+    Dep.prototype = {
+        addSub:function(sub){
+            this.subs.push(sub);
+        },
+        notify: function(val){
+            this.subs.forEach(function(sub){
+                sub.updated(val);
+//                console.log(sub.prototype.updated());
+            })
+        }
+    };
+
+    function Watcher() {
+        console.log('watcher changed');
+    }
+    Watcher.prototype = {
+        updated: function(val){
+            console.log("执行数据更新操作，新数据为："+val);
+        }
+    };
+    var watcher = new Watcher();
+    var data = {
+        name:'shinelp100'
+    };
+    Observer(data);
+    data.name = "shinelw100";
+
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+@import "./entry.css";
+body {
+    background-color: skyblue;
+    color: red;
+    font-size:24px;
+}

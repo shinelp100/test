@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Extend</title>
+</head>
+<body>
+<div class="test">shinelp100 <a href=""></a></div>
+<script src="./libs/jquery-3.3.1.min.js"></script>
+<script>
+    /**
+     *
+     * jq插件扩展
+     * 方法一：$.fn.method   讲方法设置到jq prototype对象上
+     *
+     * 方法二：$.extend({method:function(){})   讲方法设置到jq对象上
+     *
+    * */
+    ;(function ($) {
+        $.fn.shinelp100 = function () {
+            this.css({fontSize:'20px'});
+            return this;
+        }
+    })(jQuery)
+
+
+
+    ;(function($){
+        $.extend({
+            shine:function(){
+                console.dir(this);
+                return this;
+            }
+        })
+    })(jQuery)
+
+
+    ;$("body").on("click",".test",function(){
+        var a = $(this).css({backgroundColor:'red'}).shinelp100().css({color:"#fff"}).find("a");
+        $.shine();
+        console.log(a);
+        console.dir(this);
+        console.dir($);
+        console.dir($(this))
+    })
+</script>
+</body>
+</html>

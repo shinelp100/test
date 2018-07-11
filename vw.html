@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vw</title>
+    <meta name="viewport" content="width=375,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+        html,body {
+            max-width:750px;
+            min-width:320px;
+        }
+        .container {
+            width:100vw;
+            height:50vh;
+            background-color: #f96;
+        }
+        .inner-container {
+            width: 80vw;/*vw是根据现有的设备的屏幕宽度来计算的   确定页面会随着视口过大或过小 失去了最大最小宽度的限制*/
+            height:80vw;
+            background-color: skyblue;
+            margin: 0 auto;
+            font-size:14px;
+        }
+        .body-box {
+            width:100%;
+            height:500px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="inner-container">
+        我是测试的小尾巴我是测试的小尾巴我是测试的小尾巴我是测试的小尾巴我是测试的小尾巴
+    </div>
+</div>
+<div class="body-box"></div>
+<a href="https://caniuse.com/#search=vw">viewport/vw兼容问题 android>=4.4 ios>=8</a>
+<a href="https://aotu.io/notes/2017/04/28/2017-4-28-CSS-viewport-units/index.html">这篇文章说道只是用vw的确定以及配合使用rem的好处</a>
+<div>
+    总结：vw是根据现有的设备的屏幕宽度来计算的   确定页面会随着视口过大或过小 失去了最大最小宽度的限制
+    vw+rem:
+        1、给根元素大小设置随着视口变化而变化的 vw 单位，这样就可以实现动态改变其大小。（给html设置字体vw 20vw） 540*0.2=108px;
+        2、限制根元素字体大小的最大最小值，配合 body 加上最大宽度和最小宽度(页面使用rem)
+</div>
+
+</body>
+</html>

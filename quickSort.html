@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>quickSort</title>
+</head>
+<body>
+<script type="text/javascript">
+    /*
+    * 1、找准基准点
+    * 2、把所有比基准点小的数放左边大的数放右边
+    * 3、递归调用自己
+    *
+    * */
+    function quickSort(arr){
+        var len = arr.length;
+        if(len <= 1) {
+            return arr;
+        }
+        var leftArr=[],rightArr=[];
+        var pivot = Math.floor(len/2);
+        for(var i=0;i<len;i++){
+            if(arr[i]<arr[pivot]){
+                leftArr.push(arr[i]);
+            } else if(arr[i]>arr[pivot]){
+                rightArr.push(arr[i]);
+            }
+        }
+        return quickSort(leftArr).concat(arr[pivot],quickSort(rightArr));
+    }
+//    var aa = quickSort([22,3,42,12,123,123,211,23221,22,2,12]);
+    var arr = quickSort([12,34,7,6,776,76,232,235,9,23]);
+    console.log(arr);
+</script>
+</body>
+</html>

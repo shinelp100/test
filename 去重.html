@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    * 方法一：一般排序
+    *
+    * 思想：向新的数组中push元素后循环对比
+    * */
+    /*function Unique(arr){
+        if(Object.prototype.toString.call(arr)!=='[object Array]'){
+            throw new Error(`${arr} this is not a Array`);
+        }
+        var result=[];
+        for(var i = 0;i<arr.length;i++){
+            for(var j=0;j<result.length;j++){
+                if(arr[i]===result[j]){
+                    break;
+                }
+            }
+            if(j===result.length){
+                result.push(arr[i]);
+            }
+        }
+        return result;
+    }*/
+
+    /**
+     * 方法二：排序后去重
+     *
+     * 思想：前后对比相同删除前一项，然后再对比新数组的相同的位置直到不相等i++;
+     * */
+    /*function Unique(arr){
+        if(Object.prototype.toString.call(arr)!=='[object Array]'){
+            throw new Error(`${arr} this is not a Array`);
+        }
+        var newArr = arr.sort(function(a,b){return a-b;});
+        for(var i=0;i<newArr.length;){
+            if(newArr[i]===newArr[i+1]){
+                newArr.splice(i,1);
+            } else {
+                i++;
+            }
+        }
+        console.log(newArr);
+    }*/
+
+
+    /*
+    * 方法三：数组前后对比筛除法
+    *
+    * 思想：数组遍历筛选第一项对比所有项，然后再依次对比
+    *
+    * */
+    /*function Unique(arr){
+        if(Object.prototype.toString.call(arr)!=='[object Array]'){
+            throw new Error(`${arr} this is not a Array`);
+        }
+        var result=[],len = arr.length;
+        for(var i = 0;i<len;i++){
+            for(var j=i+1;j<len;j++){
+                if(arr[i]===arr[j]){
+                    break;
+                }
+            }
+            //j===arr.length则说明没有重复项
+            if(j===len){
+                result.push(arr[i]);
+            }
+        }
+        return result;
+    }*/
+
+
+    /*
+    * 方法四：ES6新方法
+    * */
+//    function Unique(array) {
+//        return Array.from(new Set(array));//Set对象是类似没有重复项的数组对象
+//    }
+    console.log(Unique([1,1,23,4,56,2,71,56,23,2,21,1]));
+</script>
+</body>
+</html>

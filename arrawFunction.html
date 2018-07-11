@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>arrawFunction</title>
+</head>
+<body>
+    <select readonly name="ssss" id="">
+        <option  value="sss">sss</option>
+        <option value="1sss">1sss</option>
+        <option disabled value="2sss">2sss</option>
+    </select>
+
+<script>
+//    "use strict";
+    /*
+    * use strict
+    * 1、不允许使用未声明的变量
+    * 2、不允许使用 delete
+    * 3、禁止this关键字指向全局对象
+    * 4、保留字和关键字不能使用
+    *
+    *
+    * 使用use strict
+    * 消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为
+    * 1、消除代码运行的一些不安全之处，保证代码运行的安全；
+    * 2、提高编译器效率，增加运行速度；
+    * 3、为未来新版本的Javascript做好铺垫。
+    *
+    *
+    *
+    * */
+//     a  = "adf";
+    console.log(this);
+//    delete Object.prototype;
+    function a(){
+        //禁止this关键字指向全局对象
+        return this;
+    }
+    console.log(a());
+
+
+
+    /*
+    * 箭头函数:箭头函数表达式的语法比函数表达式更短，并且不绑定自己的this，arguments，super或 new.target。
+    * 这些函数表达式最适合用于非方法函数，并且它们不能用作构造函数。
+    *
+    *
+    * Person is not a constructor
+    * */
+
+
+
+    /*
+    * 构造函数模式
+    * */
+    function Person(){
+        console.log(arguments);
+        this.name = 'shinelp100';
+        this.tellYou = function(){
+//            alert(this.name + 'i love you');
+            return "i love you also";
+        }
+    }
+    var person = new Person('shinelp100','lw0222');
+    console.log(person.tellYou());
+
+
+    /*
+    *箭头函数相当于bind(this);
+    *
+    * */
+    var Animal = {
+        name:"monkey",
+        getName:function () {
+           return function () {
+               alert(this.name)
+           }
+        }
+    }
+
+    var a = Animal.getName();
+    console.log(a());
+
+    var variable = false;
+    var aa = `shinelp100 帅 ${variable}`;
+    console.log(aa);
+
+
+    /*
+    * ES6
+    * 1、let const
+    * 2、箭头函数
+    * 3、字符串模板
+    * 4、对象的拷贝 Object.assign()
+    * 5、promise
+    * 6、async await ES2017
+    *
+    *
+    *
+    *
+    *
+    *
+    * */
+
+
+    /*
+    * new 操作符做了什么
+    *
+    * 1.声明一个中间对象
+    * 2.将该中间对象的proto指向构造函数的原型
+    * 3.将构造函数的this通过apply指向中间对象
+    * 4.返回该中间对象,也就是返回了实例对象
+    * */
+
+
+
+    /*
+    * http 应用层
+    *
+    * tcp 传输层
+    *
+    * ip 网络层
+    *
+    * 以太网
+    *
+    *
+    *
+    *
+    * */
+</script>
+</body>
+</html>

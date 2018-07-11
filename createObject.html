@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Obeject</title>
+</head>
+<body>
+<div>
+    我是测试文字
+</div>
+<div style="display: none;width: 100px;height: 100px;"></div>
+<div>是呢老婆1oo</div>
+<div style="visibility:hidden;width: 100px;height: 100px;"></div>
+<div>sahhh</div>
+<div style="overflow: hidden">
+    <div style="margin-bottom: 20px;" class="box1">123</div>
+</div>
+
+<div style="margin-top: 20px;" class="box2">123455</div>
+<script>
+    /*
+    * 创建对象的三种模式
+    * 1、字面量
+    * 2、通过构造函数
+    * 3、Object.create
+    *
+    *
+    * */
+
+
+//1、字面量
+    var a = {b:'a',c:'s'};
+//2、通过构造函数
+    var b = {name: "o2"};
+    b.__proto__ = {age:26};
+    var o2 = new Object(b);
+    console.log(o2);
+    var M = function(name){ this.name = name };
+    var o3 = new M("o3");
+
+    /*
+    * 实现方式
+    *
+   * new 操作符做了什么
+   *
+   * 1.声明一个中间对象
+   * 2.将该中间对象的proto指向构造函数的原型
+   * 3.将构造函数的this通过apply指向中间对象
+   * 4.返回该中间对象,也就是返回了实例对象
+   *
+   *
+   * 1.对象有属性__proto__,指向该对象的构造函数的原型对象。
+   * 2.方法除了有属性__proto__,还有属性prototype，prototype指向该方法的原型对象。
+   *
+   *
+   * 对象的__proto__指向自己构造函数的prototype
+   * 构造函数，通过prototype来存储要共享的属性和方法，也可以设置prototype指向现存的对象来继承该对象。
+   * */
+    var o1 = new Object();
+    o1.Prototype = Base.prototype;
+    Base.call(o1);
+
+
+//    3、Object.create
+    var  p = {name: "p"};
+    var o4 = Object.create(p);
+    console.log(o4);
+    /*
+    * 实现方式
+    * */
+    Object.create =  function (o) {
+        var F = function () {};
+        F.prototype = o;
+        return new F();
+    };
+</script>
+</body>
+</html>

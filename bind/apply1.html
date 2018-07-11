@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test apply1</title>
+</head>
+<body>
+<script>
+    Function.prototype.apply = function (context, arr) {
+        var result;
+        context = context || window;
+        context.fn = this;
+        if (!arr) {
+            result = context.fn();
+        } else {
+            result = context.fn(...arr);
+        }
+        delete context.fn;
+        return result;
+    };
+    var foo = {
+        name: 'shinelp100'
+    };
+    var bar = function (sex, age) {
+        console.log(sex);
+        console.log(age);
+        console.log(this.name);
+        return {
+            sex: sex,
+            age: age,
+            name: this.name
+        }
+    };
+
+    console.log(bar.call(foo, 'boy', 26));
+    console.log(bar.apply(foo, ['boy', 26]));
+</script>
+</body>
+</html>

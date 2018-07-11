@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bind1</title>
+</head>
+<body>
+<div>bind() 方法会创建一个新函数。当这个新函数被调用时，bind() 的第一个参数将作为它运行时的 this，之后的一序列参数将会在传递的实参前传入作为它的参数。(来自于 MDN )</div>
+<script>
+    /*
+    * 1、返回一个函数
+    * 2、可以传入参数
+    * */
+    Function.prototype.bind = function (context) {
+        var self = this;
+        var args = Array.prototype.slice.call(arguments, 1);
+        console.log('shinelp1000', arguments);
+        return function () {
+            console.log('shinelp1001', arguments, this);
+            var bindArgs = Array.prototype.slice.call(arguments);
+            return self.apply(context, args.concat(bindArgs));
+        }
+    };
+    var foo = {
+        value: 1,
+        name: 'shinelp100'
+    };
+
+    function bar(name, age, age1) {
+        console.log(this.value);
+        console.log(this.name);
+        console.log(name);
+        console.log(age);
+        console.log(age1);
+    }
+
+    var bindFoo = bar.bind(foo, 'daisy', 15);
+    bindFoo('18');
+    // 1
+    // daisy
+    // 26
+    // 18
+</script>
+</body>
+</html>

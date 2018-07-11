@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>方法实现类</title>
+</head>
+<body>
+<script>
+    var Node = function (key) {
+        this.key = key;
+        this.left = null;
+        this.right = null;
+    };
+    var node = new Node("shinelp100");
+    var NodeObj = {
+        key: 'shinelp100',
+        left: null,
+        right: null
+    };
+    console.log(typeof node);
+    console.log(typeof NodeObj);
+    console.log(node,NodeObj);
+    console.log(node.__proto__.__proto__,NodeObj.__proto__.__proto__);
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>deepCopy</title>
+</head>
+<body>
+<script>
+    /*浅拷贝  直接赋值引用*/
+    var a = {'name':'shinelp100','age':'26',method:function(){console.log('copy')}},
+        b = {'sex':'boy','county':'china','arr':[1,2,3,4,5]};
+    var c = Object.assign(a,b);
+    a.name = 'shinelw100';
+//    console.log(c);
+
+    /*深拷贝  改变引用地址*/
+    var d = JSON.parse(JSON.stringify(Object.assign(a,b)));
+    a.name = 'shinelw100';
+//    console.log(d);
+
+    function getType(obj){
+        var toString = Object.prototype.toString;
+        var map = {
+            '[object Boolean]'  : 'boolean',
+            '[object Number]'   : 'number',
+            '[object String]'   : 'string',
+            '[object Function]' : 'function',
+            '[object Array]'    : 'array',
+            '[object Date]'     : 'date',
+            '[object RegExp]'   : 'regExp',
+            '[object Undefined]': 'undefined',
+            '[object Null]'     : 'null',
+            '[object Object]'   : 'object'
+        };
+        if(obj instanceof Element) {
+            //Element document node
+            return 'element';
+        }
+        return map[toString.call(obj)];
+    }
+
+    function deepClone(data){
+        var type = getType(data),
+            result;
+        if(type == 'array'){
+            var len = data.length;
+            result = [];
+        } else if(type == 'object'){
+            result = {};
+        } else {
+            return data;
+        }
+        if(type == 'array'){
+            for(var i = 0; i<len;i++){
+                result[i] = deepClone(data[i]);
+            }
+        } else {
+            for(var key in data){
+                result[key] = deepClone(data[key]);
+            }
+        }
+        return result;
+    }
+
+    var testArr = [12,3,445,6];
+    var testArrB = deepClone(testArr);
+    var testArrC = testArr;
+    testArr[0] = 11;
+//    console.log(testArr,testArrC,testArrB);
+    var testArr = {name:"shinelp100",age:"26",method:function(){console.log('test')},privateP:{obj:'missY',shine:function(){alert('shine')}}};
+    var testArrB = deepClone(testArr);
+    var testArrC = testArr;
+    testArr['privateP']['obj'] = "shineY";
+//    console.log(testArr,testArrC,testArrB);
+
+
+    /**/
+    var arr = [12,3,4,5,6,20,9,12],bbb=[],ccc=[],ddd=[];
+//    for(var i=0;i<arr.length;i++){
+//        bbb.push(arr[i]);
+//    }
+    bbb = arr.join(",").split(",");
+    ccc = arr.slice(0);
+    ddd = arr.concat();
+    arr[0] = 200;
+    console.log(arr,bbb,ccc,ddd);
+</script>
+</body>
+</html>

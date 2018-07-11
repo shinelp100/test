@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Vue(options){
+        this._init(options);
+    }
+
+    /*
+    * 初始化状态是对options中的data、props(组件中用到)、
+    * methods、computed等进行初始化操作，偏数据层面。
+    *
+    * 挂在节点会对dom进行分析，生成指令，同时生成关联数据
+    * 和指令的watcher对象。在数据改变时，会通过watcher通
+    * 知directive进行视图的更新。
+    * */
+    Vue.prototype._init = function(options){
+        //初始化状态
+        this._initState();
+
+        //挂载dom节点
+        if(options.el){
+            this.$mount(options.el)
+        }
+    };
+
+    /*
+    * 状态初始化会的作用作用是把data下面的数据字段都设计成响应式的：
+    * 数据获取(getter)的时候收集其关联到的指令，
+    * 数据变化(setter)的时候通知指令进行视图的更新。
+    * _initState主要包括以下几个函数
+    * */
+    Vue.prototype._initState = function(){
+        this._initProps();//组件的props初始化
+        this._initMeta();
+        this._initMethods(); //把methods方法绑定到实例上
+        this._initData(); //数据初始化
+        this.initComputed(); //
+    };
+
+    /*
+    * _initMethods 可以直接实例上获取methods方法
+    * */
+    Vue.prototype._initMethods = function(){
+        var methods = this.$options.methods;
+        if(methods){
+            for(var key in methods){
+                this[key] = bind(methods[key],this);
+            }
+        }
+    };
+
+    var vm = new Vue({
+        el:'#app'
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test call</title>
+</head>
+<body>
+<script>
+    Function.prototype.call = function (context) {
+        var args = [], result;
+        context = context || window;
+        context.fn = this;
+        for (var i = 1; i < arguments.length; i++) {
+            args.push(arguments[i]);
+        }
+        result = context.fn(...args);
+        delete context.fn;
+        return result;
+    };
+
+    var foo = {
+        name: 'shinelp100'
+    };
+    var bar = function (sex, age) {
+        console.log(sex);
+        console.log(age);
+        console.log(this.name);
+        return {
+            sex: sex,
+            age: age,
+            name: this.name
+        }
+    };
+
+    console.log(bar.call(foo, 'boy', 26));
+    console.log(bar.apply(foo, ['boy', 26]));
+</script>
+</body>
+</html>

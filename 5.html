@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+"use strict";
+    var Animal = {
+        name:"monkey",
+        getName:function () {
+            return function (){
+                alert(this.name)
+            }
+        }
+    };
+
+
+//    var Animal = {
+//        name:"monkey",
+//        getName:function () {
+//            return  ()=> {
+//                alert(this.name)
+//            }
+//        }
+//    };
+
+//    var Animal = {
+//        name:"monkey",
+//        getName:function () {
+//            return function () {
+//                alert(this.name)
+//            }.bind(this)
+//        }
+//    };
+
+
+    var a = Animal.getName();
+    console.log(a());
+</script>
+</body>
+</html>

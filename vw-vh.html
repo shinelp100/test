@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dpr="2">
+<head>
+    <meta charset="UTF-8">
+    <title>vw-vh</title>
+    <!--<meta name="viewport" content="width=device-width,initial-scale=0.5,minimum-scale=0.5,maximum-scale=0.5,user-scalable=no">-->
+    <meta name="viewport" content="width=device-width,initial-scale=2,minimum-scale=2,maximum-scale=2,user-scalable=no">
+    <!--
+    1、viewport是虚拟窗口（页面的大小）
+        当设置width = someValue是 相当于设置一个最小宽度值
+        当不设置宽度是  body或是html默认是等于width=device-width
+
+        initial-scale:页面初次load的时候缩放比例
+
+
+    2、当你打开一个pc页面是浏览器会自动缩放到可以完全显示这个页面的缩放比
+        前提是这个pc页面并没有设置viewport
+        默认设置的initial-scale = device-width/pcWidth(对应缩小了这么多倍)
+    -->
+    <style>
+        * {
+            padding:0;
+            margin: 0;
+            border:0;
+        }
+        body {
+            /*width:750px;*/
+        }
+        .container {
+            width:100vw;
+            height:100vw;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    我是测试的小尾巴我是测试的小尾巴我是测试的小尾巴我是测试的小尾巴我是测试的小尾巴我是测试的小尾巴
+</div>
+</body>
+</html>

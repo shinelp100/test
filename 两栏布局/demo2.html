@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>两栏布局</title>
+    <style>
+        .container {
+            position: relative;
+        }
+        .container div:nth-of-type(1) {
+            float: left;
+            width: 200px;
+            min-height: 400px;
+            background-color: red;
+        }
+        .container div:nth-of-type(2) {
+            overflow: hidden;
+            width: auto;
+            min-height: 500px;
+            background-color: #f96;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div></div>
+    <div></div>
+</div>
+
+</body>
+</html>

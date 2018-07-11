@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prototype</title>
+</head>
+<body>
+<script>
+    /*
+    * 构造函数模式
+    * */
+        var A = function () {
+            this.name = "shinelp100";
+            return this;
+            /****
+             * 错误的做法
+             * */
+
+//            return {
+//                object
+//            }
+        };
+        A.increase = function(){
+            alert("i increase other");
+        };
+
+        A.prototype.doThing = function () {
+            alert(1);
+        };
+
+        var newObj = new A();
+        console.dir(newObj);
+        console.dir(A);
+
+        newObj.doThing();
+
+    A.prototype.doThingOther = function () {
+        alert("shinelp100");
+    };
+
+    //    newObj.b();
+</script>
+</body>
+</html>

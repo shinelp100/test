@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加分号</title>
+</head>
+<body>
+<script>
+    function Thousands(val){
+        var arr = val.toString().split("").reverse(),len=arr.length;
+        if(len<4){return val;}
+
+        for(var i = 0;i<Math.floor(len/3);i++){
+            arr.splice(3+i+3*i,0,',');
+        }
+        var newArr = arr.reverse();
+        if(newArr[0] ===","){
+            newArr.splice(0,1);
+        }
+        return newArr.join("");
+    }
+    console.log(Thousands(7123000045));
+</script>
+</body>
+</html>

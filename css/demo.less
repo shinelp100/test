@@ -1,0 +1,205 @@
+@a:75rem;
+@b:37.5rem;
+[v-cloak] {
+  display: none;
+}
+body {
+  padding-bottom: 50px;
+}
+.flex-content {
+  padding:180/@a 0 20/@a 0;
+}
+
+.header {
+  position: fixed;
+  top:0;
+  margin:0 auto;
+  z-index: 100;
+  width:10rem;
+  .title {
+    height: 44/@b;
+    text-align: center;
+    line-height: 44/@b;
+    font-size: 18/@b;
+    color: #333;
+    background: #fafafa;
+    border-bottom: 1/@b solid #d8d8d8;
+    overflow: hidden;
+  }
+  .bar {
+    background-color: #fff;
+    height:44/@b;
+    li {
+      width:33.3333%;
+      text-align: center;
+      color: #333;
+      line-height:44/@b;
+      font-size: 16/@b;
+      span {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+
+.p2c,.loan,.transfer {
+  padding: 0 0 0 40/@a;
+  font-size: 28/@a;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: #fff;
+  margin-top: 20/@a;
+  .bottom-line {
+    border-bottom: .02666667rem solid #ddd;
+    margin-bottom: 25/@a;
+  }
+  .title {
+    p {
+      width: 550/@a;
+      line-height: 72/@a;
+      font-size: 28/@a;
+      color: #131313;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+      overflow: hidden;
+      padding:0 40/@a 0 10/@a;
+    }
+    span.rg {
+      margin-top: 0.2rem;
+      margin-right: 35/@a;
+      width: 110/@a;
+      height: 24/@b;
+      line-height: 24/@b;
+      font-size: 12/@b;
+      color: #fff;
+      text-align: center;
+      display: inline-block;
+      background: #ff9800;
+      border-radius: 5/@b;
+      -moz-border-radius: 5/@b;
+      -webkit-border-radius: 5/@b;
+    }
+  }
+  .label {
+    margin: -4/@b 0 10/@b 0;
+    span.deal_tips_blue {
+      padding: 0 3/@b;
+      border: 1/@b solid #0080ff;
+      border-radius: 5/@b;
+      color: #0080ff;
+      font-size: 12/@b;
+      margin-right: 15/@b;
+      padding-top: 1/@b;
+      padding-bottom: 1/@b;
+    }
+  }
+  .deal-data {
+    padding: 0 15/@b 0 0;
+    margin: 0;
+    .lf {
+      padding: 0;
+      margin: 0;
+      text-align: center;
+      color: #666666;
+      width:33%;
+      .rate-steps {
+        font-size: 36/@a;
+        .unit {
+          font-size: 28/@a;
+          position: relative;
+          font-style: normal;
+        }
+        em {
+          font-size: 24/@a;
+          position: relative;
+          font-style: normal;
+          top: -0.2rem;
+          left: -0.15rem;
+        }
+      }
+      p {
+        line-height: 24/@b;
+        font-size: 12/@b;
+        color: #737373;
+      }
+    }
+  }
+  .progress {
+    span.line {
+      margin: 9/@b 0 9/@b 0;
+      width: 285/@b;
+      height: 2/@b;
+      background: #ddd;
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+      i {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2/@b;
+        background: #f44336;
+        z-index: 10;
+      }
+    }
+    .rate {
+      padding: 0 10/@b 0;
+      text-align: center;
+      margin-top: -0.2rem;
+      position: relative;
+      top:-0.15rem;
+    }
+    .type {
+      height: 24/@b;
+      line-height: 24/@b;
+      font-size: 12/@b;
+      display: block;
+      margin: -10/@a 40/@a 0 0;
+    }
+    .type::before {
+      content: '';
+      margin: 10/@b 5/@b 0 2/@b;
+      float: left;
+      width: 5/@b;
+      height: 5/@b;
+      background: #f44336;
+      display: inline-block;
+      border-radius: 50%;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+    }
+  }
+}
+
+.newer {
+  background: url("../images/newer.png") #fff top left no-repeat;
+  background-size: 80/@a 80/@a;
+}
+.special-color {
+  color: #f44336;
+}
+.over {
+  background: #aaa!important;
+}
+.loan .label span.deal_tips_red, .p2c .label span.deal_tips_red {
+  color: #f44336;
+  border: 1/@b solid #f44336;
+}
+.transfer .title p i {
+  color: #ff9800;
+  font-style: normal;
+}
+.header .bar li span.selected {
+  display: inline-block;
+  border-bottom: 1px solid #f44336;
+  color: #f44336;
+}
+.loading {
+  text-align: center;
+  padding:0.3rem 0;
+  font-size:30/@a;
+}

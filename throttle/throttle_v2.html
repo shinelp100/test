@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #container {
+            background-color: #f96;
+            width: 400px;
+            height: 400px;
+            margin: 200px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    /*节流思想是一段时间内触发只会在你的delay后执行一次*/
+    var throttle = function (fn, delay) {
+        var timer = null;
+        return function () {
+            var context = this, args = arguments;
+            if (timer) {
+                return;
+            }
+            timer = setTimeout(function () {
+                fn.apply(context, args);
+                timer = null;
+            }, delay);
+        }
+    };
+
+    document.querySelector("#container").addEventListener('mousemove', throttle(
+        function () {
+            console.log('shinelp100')
+        }
+        , 1000), false);
+</script>
+</body>
+</html>

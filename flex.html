@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1, user-scalable=no">
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+        .container {
+            display: -webkit-flex;
+            display: flex;
+        }
+        .initial {
+            -webkit-flex: initial;
+            flex: initial;
+            width: 100px;
+            min-width: 50px;
+            background-color: red;
+        }
+        .none {
+            -webkit-flex: none;
+            flex: none;
+            width: 100px;
+            background-color: skyblue;
+            height:200px;
+            display: -webkit-flex;
+            display:         flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+        }
+        .flex1 {
+            -webkit-flex: 1;
+            flex: 1;
+            background-color: blue;
+        }
+        .flex2 {
+            -webkit-flex: 2;
+            flex: 2;
+            background-color: yellow;
+            display: -webkit-flex;
+            display: flex;
+        }
+        .flex21 {
+            -webkit-flex: 1;
+            flex: 1;
+        }
+        .flex22 {
+            -webkit-flex: 1;
+            flex: 1;
+        }
+        .p1 {
+            width:50px;
+            height:50px;
+            background-color: #f96;
+            text-align: center;
+            line-height:50px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="initial">nav</div>
+    <div class="none"><p class="p1">none</p></div>
+    <div class="flex1">flex1</div>
+    <div class="flex2">
+        <div class="flex21">flex21</div>
+        <div class="flex22">flex22</div>
+    </div>
+</div>
+</body>
+</html>

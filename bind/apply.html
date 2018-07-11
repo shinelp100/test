@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>apply</title>
+</head>
+<body>
+<script>
+    Function.prototype.apply2 = function (context, arr) {
+        console.log(context,arr,this);
+        var context = Object(context) || window;
+        context.fn = this;
+
+        var result;
+        if (!arr) {
+            result = context.fn();
+        }
+        else {
+            result = context.fn(...arr);
+        }
+
+        delete context.fn;
+        return result;
+    }
+    // 测试一下
+    var value = 2;
+
+    var obj = {
+        value: 1
+    }
+
+    function bar(name, age) {
+        console.log(this.value);
+        return {
+            value: this.value,
+            name: name,
+            age: age
+        }
+    }
+
+    bar.apply2(null); // 2
+
+    console.log(bar.apply2(obj, ['shinelp100', 26]));
+</script>
+</body>
+</html>

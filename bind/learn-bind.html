@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>learn bind</title>
+</head>
+<body>
+<script>
+    var name = "shinelp1001";
+    var obj = {
+        name: "shinelp100",
+        getFun: function () {
+            return (function () {
+                console.log(this.name)
+            }).bind(this);
+        }
+    };
+    var foo = obj.getFun();
+    foo();
+</script>
+</body>
+</html>

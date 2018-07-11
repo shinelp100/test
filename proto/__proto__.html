@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>__proto__</title>
+</head>
+<body>
+<script>
+    var Shine = function (name) {
+        this.name = name;
+    };
+    Shine.prototype.getName = function(){
+      console.log(this.name);
+    };
+    var shine = new Shine("shinelp100");
+    console.dir(shine.__proto__ === Shine.prototype);
+    console.dir(Shine.prototype.__proto__ === Object.prototype);
+
+    /*
+    * 原型链：每一个实例都有一个指向原型对象的指针、
+    * 每一个原型对象都有一个指向构造函数的指针，
+    * 这样一条链称为原型链
+    *
+    * */
+</script>
+</body>
+</html>

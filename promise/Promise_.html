@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise_</title>
+</head>
+<body>
+<script>
+    var promise = new Promise((resolve, reject) => {
+        try {
+            setTimeout(() => {
+                resolve("shinelp100");
+            }, 1000)
+        } catch (error) {
+            reject(error);
+        }
+    });
+
+    async function _sync() {
+        this.name = "aaa";
+        await promise.then(function (val) {
+            console.log(val, this.name)
+        }).catch(function(error){console.log(error)});
+        console.log("shinelp100")
+    }
+    _sync();
+</script>
+</body>
+</html>

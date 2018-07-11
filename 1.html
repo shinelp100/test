@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue生命周期</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{message}}</p>
+</div>
+</body>
+<script src="js/quickSort.js"></script>
+<script src="js/deepClone.js"></script>
+<script>
+//    var vm = new Vue({
+//        el:"#app",
+//        data:{
+//
+//        },
+//        methods:{
+//
+//        }
+//    })
+    var arr = [12,34,7,6,1010,776,76,232,235,9,23];
+    console.log(quickSort(arr));
+
+
+    /*
+    * 深拷贝
+    * */
+
+    var aa = [12,2,4,5,6,[12,3234,232]],cc=[];
+    for(var i in aa) {
+        cc[i] = aa[i];
+    }
+    var bb = deepClone(aa);
+    aa[5][1] = 2220;
+    aa[0] = 1232;
+    console.log(aa,bb,cc);
+</script>
+</html>

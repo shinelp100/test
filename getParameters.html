@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>getParameters</title>
+</head>
+<body>
+<script>
+    function getParameters(property) {
+        var url = location.href;
+        if (url.indexOf("?") == -1) {
+            return null;
+        }
+        var args = url.split("?"),arg = args[1].split("&"),obj = {};
+        for (var i = 0; i<arg.length;i++){
+            var params = arg[i].split("=");
+            obj[params[0]] = params[1];
+        }
+        return obj[property]?obj[property]:null;
+    }
+    console.log(getParameters('_ijt'));
+</script>
+</body>
+</html>

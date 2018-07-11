@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lazyload</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+        .container li img {
+            display: block;
+            width:100%;
+            margin: 15px 0;
+        }
+        img {
+            width:100%;
+            height:200px;
+        }
+    </style>
+</head>
+<body>
+<ul class="container">
+   <li><img src="https://static.wenjf.com/upload/adv/ad1529043225247176.png" alt=""></li>
+   <li><img src="https://static.wenjf.com/upload/adv/ad1505117943904263.png" alt=""></li>
+   <li><img src="https://static.wenjf.com/upload/adv/ad1513166853885992.png" alt=""></li>
+   <li><img class="imgLazyLoad" data-src="https://static.wenjf.com/upload/adv/18fb27606bd3c1360ccf0c51c3d38884.jpg" alt=""></li>
+   <li><img class="imgLazyLoad" data-src="https://static.wenjf.com/upload/adv/ad1529043225247176.png" alt=""></li>
+   <li><img class="imgLazyLoad" data-src="https://static.wenjf.com/upload/adv/18fb27606bd3c1360ccf0c51c3d38884.jpg" alt=""></li>
+   <li><img class="imgLazyLoad" data-src="https://static.wenjf.com/upload/adv/ad1529043225247176.png" alt=""></li>
+   <li><img class="imgLazyLoad" data-src="https://static.wenjf.com/upload/adv/18fb27606bd3c1360ccf0c51c3d38884.jpg" alt=""></li>
+   <li><img class="imgLazyLoad" data-src="https://static.wenjf.com/upload/adv/ad1513166853885992.png" alt=""></li>
+</ul>
+<script>
+    var allImg = document.querySelectorAll(".imgLazyLoad"),imgList = Array.prototype.slice.apply(allImg);
+
+    function debounce(fn, delay){
+        var timer = null;
+        return function(){
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function(){
+                console.log(this,arguments);
+                fn.apply(context, args);
+            }, delay);
+        };
+    }
+
+    function isInViewport(el){
+        var ELP = el.getBoundingClientRect();
+        console.log((ELP.bottom>0 && ELP.top<(document.documentElement.clientHeight || window.innerHeight) + parseInt(30)));
+        return (ELP.bottom>0 && ELP.top<(document.documentElement.clientHeight || window.innerHeight) + parseInt(30));
+    }
+
+    function _loadImg(){
+        for(let i =0;i<imgList.length;i++){
+            if(isInViewport(imgList[i])){
+                imgList[i].src = imgList[i].getAttribute('data-src');
+                imgList.splice(i,1);
+                i--;
+            }
+        }
+    }
+
+    window.addEventListener('scroll',debounce(_loadImg,1000),false)
+</script>
+</body>
+</html>

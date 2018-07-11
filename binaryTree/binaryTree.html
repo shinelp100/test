@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>binaryTree</title>
+</head>
+<body>
+<script>
+    function BinaryTree() {
+        var Node = function (key) {
+            this.key = key;
+            this.left = null;
+            this.right = null;
+        };
+        var root = null,start=Date.now();
+
+        var insertNode = function (node, newNode) {
+            if (node.key > newNode.key) {
+                if (node.left === null) {
+                    node.left = newNode;
+                } else {
+                    insertNode(node.left, newNode);
+                }
+            } else {
+                if (node.right === null) {
+                    node.right = newNode;
+                } else {
+                    insertNode(node.right, newNode);
+                }
+            }
+        };
+        this.insert = function (key) {
+            var newNode = new Node(key);
+            if (root === null) {
+                root = newNode;
+            } else {
+                console.log(root);/*打印出二叉树结构*/
+                insertNode(root, newNode);
+            }
+        };
+
+        var orderTraversal = function(node,callback){
+            if(node !== null){
+                orderTraversal(node.left,callback);
+                callback(node.key);
+                orderTraversal(node.right,callback);
+            }
+        };
+        this.inOrderTraversal = function(callback){
+            orderTraversal(root,callback);
+            console.log("性能测试耗时：",Date.now()-start);
+        }
+    }
+    var binaryTree = new BinaryTree();
+    var arr = [8,3,10,1,6,14,4,7,13,55,20,44,9,9];
+    arr.forEach(function(key){
+        binaryTree.insert(key);
+    })
+    binaryTree.inOrderTraversal(function(key){
+        console.log(key);
+    })
+
+    /*构建二叉树+中序遍历性能测试30ms*/
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise</title>
+</head>
+<body>
+<script>
+    /*
+    * 一个简单的promise
+    *
+    * */
+
+    function Promise(fn) {
+        var state = "pending",value = null, defer = [];
+        this.then = function (onFullFilled) {
+            if(state==="pending"){
+                defer.push(onFullFilled);
+                return this;
+            }
+            onFullFilled(value);
+            return this;
+        };
+
+        function resolve(newValue) {
+            value = newValue;
+            state = "fulfilled";
+            window.setTimeout(function(){
+                defer.forEach(function (cb) {
+                    cb(value)
+                })
+            },0)
+        }
+
+        fn(resolve);
+    }
+
+    var promise = new Promise(function (resolve) {
+        setTimeout(()=>{resolve("shinelp100");},1000);
+        });
+    promise.then(function(value){
+        console.log(value)
+    }).then(function(value){
+        console.log("name",value)
+    })
+</script>
+</body>
+</html>

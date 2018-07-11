@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>如何实现一个bind</title>
+</head>
+<body>
+<script>
+    Function.prototype.bind = function (context) {
+        var self = this;
+        return function () {
+            return self.apply(context);
+        }
+    };
+    var name = "windows";
+
+    function a() {
+        console.log(this.name)
+    }
+
+    a.bind({"name": "shinelp100"})();
+    a.apply({"name": "shinelp100"});
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var throttle = function(fn, delay){
+        var timer = null;
+        return function(){
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function(){
+                console.log(args);
+                fn.apply(context, args);
+            }, delay);
+        };
+    };
+    window.onresize = throttle(myFunc, 1000,'shinelp100');
+    function myFunc(name){
+        console.log(name);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>class</title>
+</head>
+<body>
+<script>
+    function BinaryTree() {
+        /*私有方法  对内方法  private*/
+        var Node = function (key) {
+            this.key = key;
+            this.left = null;
+            this.right = null;
+        };
+
+        /*共有方法  暴露出去的方法 public*/
+        this.interfaceApi = function (key) {
+            var newNode = new Node(key);
+            console.log('Node is instanceof Function:' ,Node instanceof Function);
+            console.log(newNode);
+            console.log('newNode is instanceof Object:' ,newNode instanceof Object);
+            /*newNode is not Function and it is Object*/
+        }
+    }
+
+    var binaryTree = new BinaryTree();
+    console.log('binaryTree is instanceof Object:',binaryTree instanceof Object);
+    console.log(binaryTree);
+    binaryTree.interfaceApi(12)
+</script>
+</body>
+</html>

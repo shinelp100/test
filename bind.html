@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bind</title>
+</head>
+<body>
+<script>
+    var name = "liangwei";
+    var value = "aaa";
+    var module = {
+        name: "shinelp100",
+        getName: function(){
+//            setTimeout(()=>{
+//                console.log(this.name);
+//            },0);
+            /*
+            * 同下面的写法
+            * */
+            setTimeout((function(){
+                console.log(this.name);
+            }).bind(this),0);
+        }
+    };
+    module.getName();
+    var tactful = module.getName;
+    tactful();
+
+    var arr = [1,[2,3],[3],44,[1,23,[45]]];
+    var result = [];
+    function newArr(arr){
+        for(var i = 0;i<arr.length;i++){
+            if(typeof arr[i]!=="object"){
+                result.push(arr[i])
+            } else {
+                newArr(arr[i])
+            }
+        }
+
+    }
+    newArr(arr);
+    console.log(result);
+</script>
+</body>
+</html>

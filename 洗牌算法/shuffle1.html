@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shuffle</title>
+</head>
+<body>
+<script>
+    /*洗牌算法
+    *
+    * 其算法思想就是 从原始数组中随机抽取一个新的元素到新数组中
+    * 1、从还没处理的数组（假如还剩n个）中，产生一个[0, n]之间的随机数 random
+    * 2、从剩下的n个元素中把第 random 个元素取出到新数组中
+    * 3、删除原数组第random个元素
+    * 4、重复第 2 3 步直到所有元素取完
+    * 5、最终返回一个新的打乱的数组
+    * */
+    var arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19];
+
+    function shuffle(arr){
+        var len = arr.length,newArr = [],startTime = Date.now();
+        for(var i = 0;i<len;i++){
+            var n = Math.floor(Math.random()*(arr.length));
+            newArr.push(arr[n]);
+            arr.splice(n,1);
+        }
+        console.log(newArr,Date.now()-startTime);
+        return newArr;
+    }
+    shuffle(arr);
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call</title>
+</head>
+<body>
+<script>
+    var foo = {
+        name: 'shinelp100'
+    };
+    function bar() {
+        console.log(this.name);
+    }
+    foo.bar = bar;
+    foo.bar();
+    delete foo.bar;
+    foo.bar();
+</script>
+</body>
+</html>

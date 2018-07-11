@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>call</title>
+</head>
+<body>
+<script>
+    Function.prototype.call2 = function (context) {
+        context.fn = this;
+        var args=[];
+        for(var i=1;i<arguments.length;i++){
+            args.push(arguments[i]);
+        }
+        context.fn(...args);
+        delete context.fn;
+    };
+
+    var foo = {
+        name: "shinelp100"
+    };
+
+    function bar(age,sex) {
+        console.log(age);
+        console.log(sex);
+        console.log(this.name);
+    }
+
+    bar.call2(foo,'boy',26);
+</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+.entry {
+    /* 引用一张图片 */
+    background: url('../images/stamp.png');
+    color: red;
+    width:651px;
+    height:651px;
+}

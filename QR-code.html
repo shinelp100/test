@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QR-code</title>
+</head>
+<body>
+<a id="qrcode" href="javascript:void(0);" target="_blank">点击链接生成二维码</a>
+<script>
+    aDom = document.querySelector("#qrcode");
+    var targetUrl = "https://shinelp100.github.io";
+    var avatar = "https://shinelp100.github.io/assets/img/avatar.jpg";
+    var href = "https://api.imjad.cn/qrcode?text="+targetUrl+"&logo="+avatar+"&size=200&level=L&bgcolor=%23ffffff&fgcolor=%23000000"
+    aDom.setAttribute('href', encodeURI(href));
+</script>
+</body>
+</html>

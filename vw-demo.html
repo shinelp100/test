@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>viewport</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vw-demo.css">
+    <!--<link rel="stylesheet" href="css/vw-demo1.css">-->
+</head>
+<body>
+<div class="flex-content" id="preheat" v-cloak>
+    <div class="banner">
+        <img @click.prevent src="images/preheat_01.png" alt="">
+        <img  @click="showRegular" class="regular-entry" src="images/regular_btn.png" alt="按钮">
+    </div>
+    <div class="part-one">
+        <img @click.prevent class="bg" src="images/preheat_02.png" alt="">
+        <div class="content">
+            <div class="title"><span>预约有礼</span></div>
+            <p>活动期间预约成功，可在周年 庆主会场（6.1-6.5）获得抽奖 机会，最高<em>666</em>元现金红包哦！</p>
+            <div id="appointment" class="btn" @click="appointment" data-click="true">{{isAppointmentMsg}}</div>
+        </div>
+    </div>
+    <div class="part-two">
+        <img @click.prevent class="bg" src="images/preheat_03.png" alt="">
+        <div class="content">
+            <div class="title"><span>神券秒杀</span></div>
+            <p>每日100张先到先得</p>
+            <div id="second" class="btn" @click="second" data-click="true">{{isSecondMsg}}</div>
+            <div class="record" @click="giftList('/ctcf/p180528/second-list')">秒杀记录>></div>
+        </div>
+    </div>
+    <div class="part-three">
+        <img @click.prevent class="bg" src="images/preheat_04.png" alt="">
+        <div class="content">
+            <div class="title"><span>天降红包雨</span></div>
+            <p>每日10：00、16：00 准时开启领完即止</p>
+            <div id="open" class="btn" @click="open">{{redPacketStatus.message}}</div>
+            <div class="record"  @click="giftList('/ctcf/p180528/red-packet-list')">我的红包>></div>
+        </div>
+    </div>
+
+    <!--活动规则-->
+    <div style="display: none;" v-cloak v-if="isShowRegular"class="mask" @click="showRegular">
+        <img class="title" src="images/regular_title.png" alt="">
+        <img class="close" src="images/close.png" alt="">
+        <div class="part">
+            <span class="type"><i>预约有礼</i></span>
+            <p>活动时间：2018.5.28-5.31；</p>
+            <p>活动期间预约成功，可在周年庆主会场期间（6.1-6.5）进行抽奖，最高666元现金红包！</p>
+        </div>
+        <div class="part">
+            <span class="type"><i>神券秒杀</i></span>
+            <p>活动时间：2018.5.28-5.31；</p>
+            <p>活动期间，每天限量发放100张大额神券，先到先得；</p>
+            <p>秒杀到的神券将立即到账，仅限周年庆结束前使用。</p>
+        </div>
+        <div class="part">
+            <span class="type special"><i>天降红包雨</i></span>
+            <p>活动时间：2018.5.28-5.31；</p>
+            <p>红包雨每日两场，分别再10点、16点开启，每轮红包限量，全部发放后本场次关闭；</p>
+            <p>每人每轮最多可参与1次，每日最多可参与2轮；</p>
+            <p>本游戏所得红包将立即到账。</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prototype</title>
+</head>
+<body>
+<script>
+    /*
+    * __proto__ prototype 区别
+    * */
+    var Fun = function () {
+        console.log('1');
+    };
+    Fun.prototype = function a() {
+        alert(1)
+    };
+    var obj = {
+
+    };
+
+    var fun = new Fun;
+    /*
+    * 方法有prototype属性   fun.prototype指向函数的构造函数
+    * 对象没有prototype
+    *
+    *
+    * __proto__ :每个JS对象一定对应一个原型对象，并从原型对象继承属性和方法
+    *
+    * */
+//    console.log('__proto__',Fun.prototype.__proto__);
+//    console.log('constructor',Fun.prototype.constructor);
+//    console.log('obj.__proto__',obj.__proto__.constructor);
+//
+//    console.log(fun);
+
+
+    /*
+    *
+    * 对象__proto__属性的值就是它所对应的原型对象：
+    * */
+    var one = {x: 1};
+    var two = new Object();
+    console.log(one.__proto__ ===Object.prototype);
+    one.__proto__ === Object.prototype // true
+    two.__proto__ === Object.prototype // true
+    one.toString === one.__proto__.toString // true
+
+    var Three = function(){return 123}
+    Three.prototype.call = function(){console.log('shinelp100')};
+    var four = new Three();
+    console.log(four);
+</script>
+</body>
+</html>
