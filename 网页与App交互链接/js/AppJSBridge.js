@@ -1,4 +1,4 @@
-!function(window){
+!function (window) {
     /**iphone jsbridge js引入*/
     window.initPage = new Function;
     if (window.navigator.userAgent.toLowerCase().search("wcgapple") != -1) {
@@ -21,23 +21,23 @@
         }
 
         // 与OC交互的所有JS方法都要在这里注册,才能让OC和JS之间相互调用
-        window.initPage = function(callBack){
+        window.initPage = function (callBack) {
             window.setupWebViewJavascriptBridge(function (bridge) {
 
                 /* JS给OC提供公开的API, 在OC中可以手动调用此API, 并且可以接收OC中传过来的参数,同时可回调OC */
                 // 获取用户信息
                 bridge.registerHandler('getRightButton', function (data, responseCallback) {
-                    if(typeof callBack === 'function') callBack();
+                    if (typeof callBack === 'function') callBack();
                 });
             })
         }
     }
     //安卓初始化
-    if(navigator.userAgent.toLowerCase().match("wcgandroid")){
+    if (navigator.userAgent.toLowerCase().match("wcgandroid")) {
         //notation: js file can only use this kind of comments
         //since comments will cause error when use in webview.loadurl,
         //comments will be remove by java use regexp
-        (function() {
+        (function () {
             if (window.WebViewJavascriptBridge) {
                 return;
             }
@@ -111,7 +111,7 @@
 
             //提供给native使用,
             function _dispatchMessageFromNative(messageJSON) {
-                setTimeout(function() {
+                setTimeout(function () {
                     var message = JSON.parse(messageJSON);
                     var responseCallback;
                     //java call finished, now need to call js callback function
@@ -126,7 +126,7 @@
                         //直接发送
                         if (message.callbackId) {
                             var callbackResponseId = message.callbackId;
-                            responseCallback = function(responseData) {
+                            responseCallback = function (responseData) {
                                 _doSend({
                                     responseId: callbackResponseId,
                                     responseData: responseData
@@ -176,9 +176,9 @@
             readyEvent.bridge = WebViewJavascriptBridge;
             doc.dispatchEvent(readyEvent);
         })();
-        window.initPage = function(callBack){
+        window.initPage = function (callBack) {
             WebViewJavascriptBridge.registerHandler('getRightButton', function (data, responseCallback) {
-                if(typeof callBack === 'function') callBack();
+                if (typeof callBack === 'function') callBack();
             });
         }
     }
@@ -187,7 +187,7 @@
             funName
             , routeMeta
             , function (responseData) {
-                if(responseData != null && responseData !="" && responseData!=undefined && typeof callBack === "function"){
+                if (responseData != null && responseData != "" && responseData != undefined && typeof callBack === "function") {
                     callback(responseData);
                 }
             }
@@ -199,7 +199,7 @@
                 funName
                 , routeMeta
                 , function responseCallback(responseData) {
-                    if(responseData != null && responseData !="" && responseData!=undefined && typeof callBack === "function"){
+                    if (responseData != null && responseData != "" && responseData != undefined && typeof callBack === "function") {
                         callback(responseData);
                     }
                 });
