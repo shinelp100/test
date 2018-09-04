@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件监听</title>
+</head>
+<body>
+<button>test</button>
+<script>
+    var event = new Event('done');
+
+    document.querySelector('button').addEventListener('done', () => {
+        alert('aa')
+    })
+
+//    document.querySelector('button').dispatchEvent(event);
+
+</script>
+<!--<script src="./Async.js"></script>-->
+<script>
+    /*
+    *
+    * 1、将一组需要执行的方法放入到对应的数组中
+    * 2、递减调用这个数组中的方法
+    * 3、调用这个数组中的第一项
+    *
+    * */
+
+    function AsyncFn() {
+        /*将类数组转化为数组格式Array.prototype.slice.call === [...array]*/
+//        console.log(Array.prototype.slice.call(arguments,0));
+        var arr = [...arguments];
+
+        this.next = function(){
+            var arrFn = null;
+            if(arr.length>0){
+                arrFn = arr.shift();
+                (typeof arrFn == 'function') && arrFn();
+            }
+        }
+
+        this.startFn = function(){
+            this.next();
+        }
+
+    }
+
+    function fn1 (){
+        console.log('shinelp100 1');
+        asyncFn.next();
+    }
+    function fn2 (){
+        setTimeout(()=>{
+            console.log('shinelp500 2');
+            asyncFn.next();
+        },5000)
+    }
+    function fn3 (){
+        console.log('shinelp100 3');
+    }
+
+    var asyncFn = new AsyncFn(fn1,fn2,fn3);
+    asyncFn.startFn()
+</script>
+</body>
+</html>

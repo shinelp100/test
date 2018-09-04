@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原生js插件</title>
+</head>
+<body>
+<script>
+    !function(global){
+        var Obj = function(){
+
+        };
+
+        Obj.prototype.add = function(){
+            alert('add');
+            return this;
+        };
+        Obj.prototype.sub = function(){
+            alert('sub');
+            return this;
+        };
+        if(typeof module !== "undefined" && module.exports) {module.exports = Obj;}
+        if(typeof define === 'function' && define.amd) {define(function(){return Obj;})}
+        !('Obj' in global) && (global.Obj = Obj);
+    }(this);
+
+    var a = new Obj();
+    console.log(a.add().sub());
+
+//    未定义的变量可以通过typeof来判断避免报错
+//     in operate 可以判断key is in object
+</script>
+</body>
+</html>

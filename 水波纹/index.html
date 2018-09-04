@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>水波纹</title>
+</head>
+<body>
+<div class="content page">
+    <canvas id="canvas"></canvas>
+</div>
+<script>
+    drawCanvas();
+
+    function drawCanvas() {
+        var canvas = document.querySelector("#canvas");
+        canvas.height = 500;
+        canvas.width = 500;
+        this.canvas = canvas;
+        this.canvasWidth = canvas.width;
+        this.canvasHeight = canvas.height;
+        var ctx = canvas.getContext('2d');
+        this.xOffset = 0;
+        this.speed = 0.1;
+        requestAnimationFrame(this.draw.bind(this));
+    }
+
+    function draw() {
+        var canvas = this.canvas
+            , ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        this.drawSin(ctx, this.xOffset);
+        this.xOffset += this.speed;
+        requestAnimationFrame(this.draw.bind(this));
+    }
+
+    function drawSin(ctx, xOffset) {
+        var points = []
+            , canvasWidth = this.canvasWidth
+            , canvasHeight = this.canvasHeight
+            , startX = 0
+            , waveWidth = 0.05
+            , waveHeight = 20
+            , xOffset = xOffset || 0;
+        ctx.beginPath();
+        for (var x = startX; x < startX + canvasWidth; x += 50 / canvasWidth) {
+            var y = waveHeight * Math.sin((x + startX) * waveWidth + xOffset);
+            points.push([x, (canvasHeight / 2) + y]);
+            ctx.lineTo(x, (canvasHeight / 2) + y);
+        }
+
+        ctx.lineTo(canvasWidth, canvasHeight);
+        ctx.lineTo(startX, canvasHeight);
+        ctx.lineTo(points[0][0], points[0][1]);
+        ctx.stroke();
+    }
+</script>
+</body>
+</html>
