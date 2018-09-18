@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择排序法</title>
+</head>
+<body>
+<div>选择排序法</div>
+<script>
+
+    /*
+    * 循环次数：
+    *
+    * n*(n-1)/2
+    *
+    * */
+    function selectionSort(arr) {
+        let len = arr.length, minIndex,a=0;
+        console.time('选择排序法');
+        for (let i = 0; i < len - 1; i++) {
+            minIndex = i;
+            for (let j = i + 1; j < len; j++) {
+                console.log(a++);
+                if(arr[j]<arr[minIndex]){
+                    minIndex = j;
+                }
+            }
+            [arr[i],arr[minIndex]] = [arr[minIndex],arr[i]];
+        }
+        console.timeEnd('选择排序法');
+        return arr;
+    }
+    var arr1 = [1232, 21, 3, 34, 33, 456, 76, 232, 2, 11, 8, 90];
+    var arr2 = [2, 3, 8, 11, 21, 33, 34, 76, 90, 232, 456, 1232];
+    console.log(selectionSort(arr2));
+</script>
+</body>
+</html>

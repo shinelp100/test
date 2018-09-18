@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css底线跟随</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        ul {
+            width: 500px;
+            height: 40px;
+            background: #ddd;
+            margin: 0 auto;
+        }
+        li {
+            float: left;
+            height: 40px;
+            line-height: 40px;
+            list-style: none;
+            position: relative;
+            padding: 0 12px;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+        }
+        li::after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 100%;
+            width: 0;
+            height: 2px;
+            background: red;
+            transition: all .15s linear;
+        }
+        li:hover::after {
+            left: 0;
+            width: 100%;
+        }
+        /*E ~ F	匹配任何在E元素之后的同级F元素*/
+        li:hover ~ li::after {
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>全部</li>
+    <li>商品列表</li>
+    <li>衣帽间</li>
+    <li>电子产品类</li>
+    <li>电子</li>
+    <li>电子产品类</li>
+</ul>
+</body>
+</html>

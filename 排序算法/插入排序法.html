@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插入排序法</title>
+</head>
+<body>
+插入排序法
+<script>
+    function insertionSort(arr) {
+        if (Object.prototype.toString.call(arr).slice(8, -1) === 'Array') {
+            console.time('插入排序法法');
+            let len = arr.length, a = 0;
+            for (let i = 1; i < len; i++) {
+                let key = arr[i];
+                let j = i - 1;
+                while (j >= 0 && arr[j] > key) {
+                    console.log(a++);
+                    arr[j + 1] = arr[j];
+                    j--;
+                }
+                arr[j + 1] = key;
+            }
+            console.timeEnd('插入排序法法');
+            return arr;
+        } else {
+            return 'array is not an Array!';
+        }
+    }
+
+    var arr1 = [1232, 21, 3, 34, 33, 456, 76, 232, 2, 11, 8, 90];
+    var arr2 = [2, 3, 8, 11, 21, 33, 34, 76, 90, 232, 456, 1232];
+    console.log(insertionSort(arr1));
+</script>
+</body>
+</html>

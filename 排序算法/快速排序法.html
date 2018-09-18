@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>快速排序法</title>
+</head>
+<body>
+快速排序法
+<script>
+    let a = 0;
+    function quickSort(arr) {
+        let len = arr.length;
+        if (len <= 1) return arr;
+        let pivot = Math.floor(arr.length / 2);
+        let pivotValue = arr.splice(pivot, 1)[0];
+        let leftArr = [], rightArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            console.log(a++);
+            if (arr[i] < pivotValue) {
+                leftArr.push(arr[i]);
+            } else {
+                rightArr.push(arr[i]);
+            }
+        }
+        return quickSort(leftArr).concat(pivotValue, quickSort(rightArr));
+    }
+
+    var arr1 = [1232, 21, 3, 34, 33, 456, 76, 232, 2, 11, 8, 90];
+    var arr2 = [2, 3, 8, 11, 21, 33, 34, 76, 90, 232, 456, 1232];
+    console.log(quickSort(arr2));
+
+    /*
+    * 循环次数：
+    *
+    * Math.log(12)*12
+    *
+    * */
+</script>
+</body>
+</html>
