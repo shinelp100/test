@@ -14,6 +14,7 @@
         if(!data || typeof data !== "object"){
             return ;
         }
+
         Object.keys(data).map(function(key){
             defineReaction(data,key,data[key]);
         })
@@ -21,7 +22,7 @@
 
     function defineReaction(data,key,val){
         var dep = new Dep();
-        Observer(val);
+        Observer(val);//递归调用遍历所有的对象
         Object.defineProperty(data,key,{
             enumerable: true,
             configurable: false,
@@ -47,6 +48,7 @@
         },
         notify: function(val){
             this.subs.forEach(function(sub){
+                console.log('sss',sub);
                 sub.updated(val);
 //                console.log(sub.prototype.updated());
             })
@@ -63,7 +65,10 @@
     };
     var watcher = new Watcher();
     var data = {
-        name:'shinelp100'
+        name:'shinelp100',
+        status:{
+            state:false
+        }
     };
     Observer(data);
     data.name = "shinelw100";

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xss存储型演示</title>
+</head>
+<body>
+<p>xss存储型演示:</p>
+<br>
+
+<textarea name="shinelp100" id="test" cols="50" rows="10">
+    提交你的评论
+    <script>alert(document.cookie)</script>
+    <img src="11" onerror="imgError()" alt="恶意加载的脚本">
+</textarea>
+<br>
+<button onclick="submit()">提交</button>
+<div class="area"></div>
+<script>
+    /*
+    * xss 存储型（持久）
+    *
+    * xss 反射型（非持久）
+    *
+    * */
+    alert('shinelp100'+document.cookie);
+    function submit(){
+        document.querySelector('.area').innerHTML = document.querySelector('#test').value;
+    }
+
+    /*自定义法去获取cookie*/
+    function imgError() {
+        alert(document.cookie);
+        /*默默的发送ajax请求给我自己的后台去获取这个用户的cookie信息  模拟登录*/
+    }
+</script>
+</body>
+</html>
