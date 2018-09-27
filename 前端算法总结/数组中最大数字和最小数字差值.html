@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组中最大数字和最小数字差值</title>
+</head>
+<body>
+数组中最大数字和最小数字差值
+<script>
+    function getDiffVal(arr) {
+        if (arr.length === 1) return;
+        arr.sort((a, b) => {
+            return a - b;
+        });
+        return arr[arr.length - 1] - arr[0]
+    }
+
+    console.log(getDiffVal([1, 2, 4, 5, 4, 100, 21, 34]))
+</script>
+</body>
+</html>

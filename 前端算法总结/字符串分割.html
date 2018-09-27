@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字符串分割</title>
+</head>
+<body>
+字符串分割
+<script>
+    function addCommas(val) {
+        let value = '', arr = [];
+        if (val.toString().match('.')) {
+            arr = val.toString().split('.');
+            value = arr[0];
+        }
+        while (/(\d+)(\d{3})/.test(value.toString())) {
+            value = value.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
+        }
+
+        if (arr[1]) {
+            return value + '.' + arr[1];
+        }
+        return value;
+    }
+</script>
+</body>
+</html>

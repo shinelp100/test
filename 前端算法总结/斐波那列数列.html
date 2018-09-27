@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>斐波那列数列</title>
+</head>
+<body>
+斐波那列数列
+<script>
+    /*
+    * n 斐波那列数列长度
+    * */
+
+    function getFibonacci(n) {
+        let fiboArr = [], i = 0;
+        while (i < n) {
+            if (i <= 1) {
+                fiboArr.push(i)
+            } else {
+                fiboArr.push(fiboArr[i - 1] + fiboArr[i - 2])
+            }
+            i++;
+        }
+        return fiboArr;
+    }
+
+    console.log(getFibonacci(10));
+</script>
+</body>
+</html>

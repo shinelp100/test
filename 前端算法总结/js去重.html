@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js去重</title>
+</head>
+<body>
+js去重
+<script>
+    /*
+    *
+    * unique to array
+    *
+    * */
+    function unique(arr) {
+        let hashTable = {}, newArr = [];
+        for (let i = 0; i < arr.length; i++) {
+            if(!hashTable[arr[i]]) {
+                hashTable[arr[i]] = true;
+                newArr.push(arr[i]);
+            }
+        }
+        return newArr;
+    }
+
+    let arr1 = [1,2,3,1,2,3,45];
+    console.log(unique(arr1));
+</script>
+</body>
+</html>

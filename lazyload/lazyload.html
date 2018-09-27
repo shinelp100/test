@@ -49,6 +49,7 @@
 
     function isInViewport(el){
         var ELP = el.getBoundingClientRect();
+        console.log(ELP);
         console.log((ELP.bottom>0 && ELP.top<(document.documentElement.clientHeight || window.innerHeight) + parseInt(30)));
         return (ELP.bottom>0 && ELP.top<(document.documentElement.clientHeight || window.innerHeight) + parseInt(30));
     }

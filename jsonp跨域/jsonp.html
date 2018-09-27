@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jsonp</title>
+</head>
+<body>
+jsonp
+<script>
+    function jsonpCallback(data){
+        console.log(data);
+    }
+    function jsonp(){
+        let Head = document.head;
+        let script = document.createElement('script');
+        script.src = 'http://47.104.226.230/free-ssr/jsonp?sex=body&blog=shinelp100@git';
+        script.type = 'text/javascript';
+        Head.appendChild(script);
+        setTimeout(()=>{
+            Head.removeChild(script);
+        },16)
+    }
+    jsonp();
+    console.log(serializeParams({'name':'shinelp100','age':25,sex:'',univesity:'anhuigongyedaxue'}))
+    function serializeParams(paramas){
+        let arr = [];
+        for(let i in paramas) {
+            arr.push(i+'='+paramas[i]);
+        }
+        return arr.join('&');
+    }
+</script>
+</body>
+</html>

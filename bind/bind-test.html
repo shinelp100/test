@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bind-test</title>
+</head>
+<body>
+bind
+<script>
+    Function.prototype.bindTest = function(context){
+        let self = this,
+            args = Array.prototype.slice.call(arguments,1);
+        return function(){
+            let arr = Array.prototype.slice.call(arguments);
+            return self.apply(context,args.concat(arr));
+        }
+    }
+</script>
+</body>
+</html>

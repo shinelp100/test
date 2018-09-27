@@ -6,17 +6,34 @@
 </head>
 <body>
 <script>
+    Function.prototype.bindTest = function(context){
+        let self = this,
+            args = Array.prototype.slice.call(arguments,1);
+        return function(){
+            let arr = Array.prototype.slice.call(arguments);
+            return self.apply(context,args.concat(arr));
+        }
+    }
+
     var name = "shinelp1001";
     var obj = {
         name: "shinelp100",
         getFun: function () {
-            return (function () {
-                console.log(this.name)
-            }).bind(this);
+            return (function (age) {
+                console.log(this.name,age)
+            }).bindTest(this);
         }
     };
     var foo = obj.getFun();
-    foo();
+    console.log(foo);
+    foo(23);
+    var fn = function () {
+        console.log(this.name)
+    };
+    var foo1 = function(){
+        fn.apply(this);
+    };
+    console.log(foo1())
 </script>
 </body>
 </html>

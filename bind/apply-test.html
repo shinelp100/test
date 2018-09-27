@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>apply</title>
+</head>
+<body>
+apply
+<script>
+    Function.prototype.applyTest = function(context){
+        let ctx = context || window,arr=[];
+        ctx.fn = this;
+        arguments[1] && (arr = [...arguments[1]]);
+        let result = ctx.fn(...arr);
+        delete ctx.fn;
+        return result;
+    };
+
+    // 测试一下
+    var value = 2;
+
+    var obj = {
+        value: 1
+    }
+
+    function bar(name, age) {
+        console.log(this.value);
+        return {
+            value: this.value,
+            name: name,
+            age: age
+        }
+    }
+
+    bar.applyTest(null); // 2
+
+    console.log(bar.applyTest(obj, ['kevin', 18]));
+</script>
+</body>
+</html>

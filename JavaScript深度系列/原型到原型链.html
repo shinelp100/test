@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>原型到原型链</title>
+</head>
+<body>
+原型到原型链
+<script>
+    function Person(){
+
+    }
+    console.log(Person.prototype);
+    var person = new Person();
+    person.name = 'shinelp100';
+    console.log(person.__proto__);
+</script>
+</body>
+</html>

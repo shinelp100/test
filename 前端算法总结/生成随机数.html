@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>生成随机数</title>
+</head>
+<body>
+生成随机数
+<script>
+    /*
+    * 生成随机数
+    *
+    *
+    * */
+    function randomStr(len) {
+        let str = 'abcdefghijklmnopqrstuvwxyz9876543210';
+        let tmp = '';
+        if (typeof len !== 'number') return;
+        for (let i = 0; i < len; i++) {
+            tmp += str.charAt(Math.floor(Math.random() * 36))
+        }
+        return tmp;
+    }
+    console.log(Math.random().toString(36).slice(2));
+    console.log(randomStr(10));
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件队列</title>
+</head>
+<body>
+事件队列
+<script>
+    /*
+    * 事件队列
+    * */
+
+    function fn2(){
+        for(var i=0;i<4;i++){
+            var tc=setInterval(function(i,tc){
+                console.log(i);
+                clearInterval(tc)
+            },1000,i,tc);
+        }
+    }
+
+    // var timer = setInterval((i,g)=>{console.log(i,g)},1000,Math.random(),timer);
+
+</script>
+</body>
+</html>

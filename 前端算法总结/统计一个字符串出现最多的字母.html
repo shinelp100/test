@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>统计一个字符串出现最多的字母</title>
+</head>
+<body>
+统计一个字符串出现最多的字母
+<script>
+    function findMaxDuplicateChar(str) {
+        if (str.length === 1) return str;
+        let strObj = {};
+        for (let i = 0; i < str.length; i++) {
+            if(!strObj[str.charAt(i)]) {
+                strObj[str.charAt(i)] = 1;
+            } else {
+                strObj[str.charAt(i)] += 1
+            }
+        }
+        let value = '',index = 0;
+        for(let j in strObj) {
+            if(strObj[j]>index){
+                index = strObj[j];
+                value = j;
+            }
+        }
+        return value;
+    }
+
+    console.log(findMaxDuplicateChar('sssswq11111123'))
+</script>
+</body>
+</html>

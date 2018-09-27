@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>两个整数的交换</title>
+</head>
+<body>
+两个整数的交换
+<script>
+    function swap(a, b) {
+        b = b - a;
+        a = a + b;
+        b = a - b;
+        return [a,b];
+    }
+    console.log(swap(12,34));
+</script>
+</body>
+</html>
