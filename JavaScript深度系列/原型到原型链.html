@@ -7,13 +7,36 @@
 <body>
 原型到原型链
 <script>
-    function Person(){
+    // function Person(){
+    //
+    // }
+    // console.log(Person.prototype);
+    // var person = new Person();
+    // person.name = 'shinelp100';
+    // console.log(person.__proto__);
 
+    function objectFactory() {
+
+        var obj = new Object(),
+
+            Constructor = [].shift.call(arguments);
+        console.log('1',obj,arguments);
+
+        obj.__proto__ = Constructor.prototype;
+        console.log('2',obj,Constructor());
+        var ret = Constructor.apply(obj, [].slice.call(arguments));
+        console.log('3',obj,ret);
+
+        return typeof ret === 'object' ? ret:obj;
     }
-    console.log(Person.prototype);
-    var person = new Person();
-    person.name = 'shinelp100';
-    console.log(person.__proto__);
+
+    function Person(){
+        this.name = 'shinelp100';
+    }
+
+    var person = objectFactory(Person);
+
+    console.log(person.name);
 </script>
 </body>
 </html>
