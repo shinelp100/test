@@ -31,7 +31,16 @@
             stroke-linejoin: round;
             stroke-miterlimit: 10;
         }
-
+        .iframe {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #f96;
+        }
         ./*st0 {
             fill-rule: evenodd;
             clip-rule: evenodd;
@@ -45,6 +54,7 @@
     </style>
 </head>
 <body>
+<a href="http://127.0.0.1:8887/lesstocss.md" download="aaa">点击下载</a>    
 <?xml version="1.0" encoding="utf-8"?>
 <svg width="100" height="100" version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="-237 241.9 63.3 56.7" style="enable-background:new -237 241.9 63.3 56.7;" xml:space="preserve">
@@ -52,11 +62,21 @@
 </style>
 <polyline class="st0" points="-219.4,264.8 -206.6,276.8 -189.5,259.5 "/>
 </svg>
+<div id="print">打印</div>
+<!-- <iframe src="iframe.html" width="100%" height="100%" ></iframe> -->
+
 <script>
     var path = document.querySelector('polyline');
     var length = path.getTotalLength();
     console.log(length);
-    import { axios } from 'lhjx'
+    // import { axios } from 'lhjx'
+    document.getElementById('print').addEventListener('click',function(){
+        var tableTmp = document.createElement('iframe');
+        tableTmp.src = "iframe.html";
+        tableTmp.classList.add('iframe');
+        console.log(tableTmp.calssList);
+        document.body.appendChild(tableTmp);
+    },false);
 </script>
 </body>
 </html>

@@ -19,7 +19,11 @@
         }
         return newArr.join("");
     }
-    console.log(Thousands(7123000045));
+
+    var num = '712300004';
+    var reg = /(?=(\B)((\d{3})+$))/g;
+    console.log('shinelp100',num.replace(reg,','));
+    console.log(Thousands(num));
 </script>
 </body>
 </html>

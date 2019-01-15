@@ -1,0 +1,42 @@
+@import url('../../lib/iview.css');
+@import url('@hb/hb-toast/index.css');
+
+[v-cloak] {
+  display: none
+}
+.title {
+  max-width: 400px;
+  text-align: center;
+  margin: 30px auto;
+}
+//表格样式
+.ivu-table-header th,.break-line th {
+  background-color: #4181B4;
+  color: #fff;
+}
+.ivu-table th {
+  white-space: normal;
+  overflow: inherit;
+}
+#app {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+tbody tr.ivu-table-row{
+  display: block;
+  width: 1000px;
+}
+.break-line {
+  display: block;
+  width: 1000px;
+}
+td {
+  width: 63px;
+}
+@media print {
+  .break-line {
+    page-break-before: always;
+    border-top: 1px solid #e8eaec;
+  }
+}

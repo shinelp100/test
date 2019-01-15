@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>removeDuplicates</title>
+</head>
+<body>
+<script>
+    var removeDuplicates = function(nums) {
+        let len = nums.length , i = 0;
+        if(len == 0) return 0;
+        for(let j = 1;j<len;j++){
+            if(nums[j] != nums[i]){
+                i++;
+                nums[i] = nums[j];
+            }
+        }
+        return i+1;
+    };
+
+    removeDuplicates([1,2,2,2,3]);
+</script>
+</body>
+</html>
